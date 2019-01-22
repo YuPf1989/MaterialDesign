@@ -5,20 +5,18 @@ import android.support.design.widget.Snackbar
 import android.support.design.widget.NavigationView
 import android.support.v4.view.GravityCompat
 import android.support.v7.app.ActionBarDrawerToggle
-import android.support.v7.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
+import com.rain.materialdesign.base.BaseActivity
+import com.rain.materialdesign.util.ext.loge
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.app_bar_main.*
 
 /**
  * 专门用于material design风格的学习
  */
-class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedListener {
+    override fun initView(savedInstanceState: Bundle?) {
         setSupportActionBar(toolbar)
 
         fab.setOnClickListener { view ->
@@ -33,6 +31,17 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         toggle.syncState()
 
         nav_view.setNavigationItemSelectedListener(this)
+
+        loge(TAG, "density:${resources.displayMetrics.density}")
+        loge(TAG, "densityDpi:${resources.displayMetrics.densityDpi}")
+        loge(TAG, "xdpi:${resources.displayMetrics.xdpi}")
+        loge(TAG, "ydpi:${resources.displayMetrics.ydpi}")
+        loge(TAG, "widthPixels:${resources.displayMetrics.widthPixels}")
+        loge(TAG, "heightPixels:${resources.displayMetrics.heightPixels}")
+    }
+
+    override fun getLayoutId(): Int {
+        return R.layout.activity_main
     }
 
     override fun onBackPressed() {
@@ -66,7 +75,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             R.id.nav_slideshow -> {
 
             }
-            R.id.nav_manage -> {
+            R.id.nav_setting -> {
 
             }
             R.id.nav_share -> {

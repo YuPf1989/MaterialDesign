@@ -24,6 +24,10 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
+    // 排除其他第三方的support库
+    configurations {
+        all*.exclude group: 'com.android.support', module: 'support-v13'
+    }
     implementation"org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     implementation 'com.android.support:appcompat-v7:28.0.0'
     implementation 'com.android.support:design:28.0.0'
@@ -31,4 +35,10 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+
+    // 头条的自动适配
+    implementation 'me.jessyan:autosize:1.1.2'
+
+    implementation 'com.afollestad.material-dialogs:commons:0.9.4.4'
+
 }
