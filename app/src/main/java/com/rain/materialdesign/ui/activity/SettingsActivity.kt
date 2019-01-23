@@ -7,8 +7,11 @@ import android.os.Bundle
 import com.afollestad.materialdialogs.color.ColorChooserDialog
 import com.rain.materialdesign.R
 import com.rain.materialdesign.base.BaseActivity
-import com.rain.materialdesign.ui.fragment.SettingFragment
+import com.rain.materialdesign.event.ColorEvent
+import com.rain.materialdesign.ui.setting.SettingFragment
+import com.rain.materialdesign.widget.SettingUtil
 import kotlinx.android.synthetic.main.toolbar.*
+import org.greenrobot.eventbus.EventBus
 
 /**
  * Author:rain
@@ -19,6 +22,9 @@ class SettingsActivity:BaseActivity(),ColorChooserDialog.ColorCallback {
     private val EXTRA_SHOW_FRAGMENT = "show_fragment"
     private val EXTRA_SHOW_FRAGMENT_ARGUMENTS = "show_fragment_args"
     private val EXTRA_SHOW_FRAGMENT_TITLE = "show_fragment_title"
+
+    override fun start() {
+    }
 
     override fun initView(savedInstanceState: Bundle?) {
         val initFragment: String = intent.getStringExtra(EXTRA_SHOW_FRAGMENT) ?: ""
@@ -55,7 +61,6 @@ class SettingsActivity:BaseActivity(),ColorChooserDialog.ColorCallback {
     }
 
     private fun onBuildStartFragmentIntent(fragmentName: String, args: Bundle?, title: String?): Intent {
-        // 将当前的activity设置为启动activity
         val intent = Intent(Intent.ACTION_MAIN)
         intent.setClass(this, javaClass)
         intent.putExtra(EXTRA_SHOW_FRAGMENT, fragmentName)
@@ -65,7 +70,11 @@ class SettingsActivity:BaseActivity(),ColorChooserDialog.ColorCallback {
     }
 
     override fun onColorSelection(dialog: ColorChooserDialog, selectedColor: Int) {
-
+        if (!dialog.isAccentMode) {
+            SettingUtil.setColor(selectedColor)
+        }
+        initThemeColor()
+//        EventBus.getDefault().post(ColorEvent(true))
     }
 
     override fun onColorChooserDismissed(dialog: ColorChooserDialog) {

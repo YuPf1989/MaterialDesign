@@ -52,11 +52,10 @@
     <!-- AboutUs -->
     <string name="about_us">About US</string>
     <string name="changelog">Update Log</string>
-    <string name="changelog_url">https://github.com/iceCola7/WanAndroid/releases</string>
     <string name="about_developers_label">Main Developer</string>
-    <string name="about_developers">https://github.com/bjchexz</string>
+    <string name="about_developers">https://github.com/YuPf1989</string>
     <string name="source_code">Source Code</string>
-    <string name="source_code_url">https://github.com/iceCola7/WanAndroid</string>
+    <string name="source_code_url">https://github.com/YuPf1989/MaterialDesign</string>
     <string name="about_libraries_label">Open Source License</string>
     <string name="about_libraries_summary">View open source license information</string>
     <string name="copyright">Copyright declaration</string>

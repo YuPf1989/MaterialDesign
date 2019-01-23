@@ -1,5 +1,7 @@
 package com.rain.materialdesign.util
 
+import com.franmontiel.persistentcookiejar.PersistentCookieJar
+
 /**
  * Author:rain
  * Date:2019/1/21 17:12
@@ -11,4 +13,9 @@ object Constants {
     const val LANGUAGE_TYPE_ENGLISH = 1
 
     const val LANGUAGE_TYPE_CHINESE = 2
+
+    /**
+     * cookie持久化
+     */
+    var cookiejar: PersistentCookieJar? = null
 }

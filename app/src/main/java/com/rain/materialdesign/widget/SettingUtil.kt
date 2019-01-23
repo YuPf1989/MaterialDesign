@@ -1,4 +1,4 @@
-package com.rain.materialdesign.util.widget
+package com.rain.materialdesign.widget
 
 import android.graphics.Color
 import android.preference.PreferenceManager

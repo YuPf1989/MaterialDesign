@@ -33,7 +33,7 @@
         <!--android:title="@string/choose_icon"-->
         <!--app:iconsDrawables="@array/iconsDrawables"/>-->
 
-        <com.rain.materialdesign.util.widget.IconPreference
+        <com.rain.materialdesign.widget.IconPreference
                 android:key="color"
                 android:layout="@layout/custom_preference_layout"
                 android:summary="@string/choose_theme_color_summary"
@@ -68,12 +68,6 @@
                 android:key="version"
                 android:layout="@layout/custom_preference_layout"
                 android:title="@string/version"/>
-
-        <Preference
-                android:key="changelog"
-                android:layout="@layout/custom_preference_layout"
-                android:summary="@string/changelog_url"
-                android:title="@string/changelog"/>
 
         <!--<Preference-->
         <!--android:key="licenses"-->

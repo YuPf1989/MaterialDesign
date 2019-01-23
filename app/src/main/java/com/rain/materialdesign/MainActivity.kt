@@ -1,21 +1,29 @@
 package com.rain.materialdesign
 
+import android.content.res.ColorStateList
 import android.os.Bundle
-import android.support.design.widget.Snackbar
 import android.support.design.widget.NavigationView
+import android.support.design.widget.Snackbar
 import android.support.v4.view.GravityCompat
 import android.support.v7.app.ActionBarDrawerToggle
 import android.view.Menu
 import android.view.MenuItem
 import com.rain.materialdesign.base.BaseActivity
-import com.rain.materialdesign.util.ext.loge
+import com.rain.materialdesign.event.ColorEvent
+import com.rain.materialdesign.ui.activity.SettingsActivity
+import com.rain.materialdesign.util.JumpUtil
 import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.app_bar_main.*
+import kotlinx.android.synthetic.main.toolbar.*
+import org.greenrobot.eventbus.Subscribe
+import org.greenrobot.eventbus.ThreadMode
 
 /**
- * 专门用于material design风格的学习
+ * 打造成一个具有material design风格的MVP框架
  */
 class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedListener {
+    override fun start() {
+    }
+
     override fun initView(savedInstanceState: Bundle?) {
         setSupportActionBar(toolbar)
 
@@ -32,16 +40,15 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
 
         nav_view.setNavigationItemSelectedListener(this)
 
-        loge(TAG, "density:${resources.displayMetrics.density}")
-        loge(TAG, "densityDpi:${resources.displayMetrics.densityDpi}")
-        loge(TAG, "xdpi:${resources.displayMetrics.xdpi}")
-        loge(TAG, "ydpi:${resources.displayMetrics.ydpi}")
-        loge(TAG, "widthPixels:${resources.displayMetrics.widthPixels}")
-        loge(TAG, "heightPixels:${resources.displayMetrics.heightPixels}")
     }
 
     override fun getLayoutId(): Int {
         return R.layout.activity_main
+    }
+
+    override fun initThemeColor() {
+        super.initThemeColor()
+        refreshColor(ColorEvent(true))
     }
 
     override fun onBackPressed() {
@@ -72,11 +79,11 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
             R.id.nav_gallery -> {
 
             }
-            R.id.nav_slideshow -> {
+            R.id.nav_night_mode -> {
 
             }
             R.id.nav_setting -> {
-
+                JumpUtil.overlay(this, SettingsActivity::class.java)
             }
             R.id.nav_share -> {
 
@@ -88,5 +95,13 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
 
         drawer_layout.closeDrawer(GravityCompat.START)
         return true
+    }
+
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    fun refreshColor(event: ColorEvent) {
+        if (event.isRefresh) {
+            nav_view.getHeaderView(0).setBackgroundColor(mThemeColor)
+            fab.backgroundTintList = ColorStateList.valueOf(mThemeColor)
+        }
     }
 }
