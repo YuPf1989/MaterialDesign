@@ -7,7 +7,7 @@ import com.franmontiel.persistentcookiejar.PersistentCookieJar
  * Date:2019/1/21 17:12
  * Description:
  */
-object Constants {
+object Constant {
     const val LANGUAGE_TYPE = "language_type"
 
     const val LANGUAGE_TYPE_ENGLISH = 1
@@ -18,4 +18,9 @@ object Constants {
      * cookie持久化
      */
     var cookiejar: PersistentCookieJar? = null
+
+
+    const val BASE_URL = "http://www.wanandroid.com/"
+
+    const val HAS_NETWORK_KEY = "has_network"
 }

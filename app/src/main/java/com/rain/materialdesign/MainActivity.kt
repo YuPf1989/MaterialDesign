@@ -6,12 +6,14 @@ import android.support.design.widget.NavigationView
 import android.support.design.widget.Snackbar
 import android.support.v4.view.GravityCompat
 import android.support.v7.app.ActionBarDrawerToggle
+import android.support.v7.app.AppCompatDelegate
 import android.view.Menu
 import android.view.MenuItem
 import com.rain.materialdesign.base.BaseActivity
 import com.rain.materialdesign.event.ColorEvent
 import com.rain.materialdesign.ui.activity.SettingsActivity
 import com.rain.materialdesign.util.JumpUtil
+import com.rain.materialdesign.widget.SettingUtil
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.toolbar.*
 import org.greenrobot.eventbus.Subscribe
@@ -80,7 +82,15 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
 
             }
             R.id.nav_night_mode -> {
-
+                if (SettingUtil.getIsNightMode()) {
+                    SettingUtil.setIsNightMode(false)
+                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+                } else {
+                    SettingUtil.setIsNightMode(true)
+                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+                }
+                window.setWindowAnimations(R.style.WindowAnimationFadeInOut)
+                recreate()
             }
             R.id.nav_setting -> {
                 JumpUtil.overlay(this, SettingsActivity::class.java)
@@ -92,8 +102,6 @@ class MainActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedList
 
             }
         }
-
-        drawer_layout.closeDrawer(GravityCompat.START)
         return true
     }
 

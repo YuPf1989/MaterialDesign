@@ -8,6 +8,8 @@
     <string name="action_settings">Settings</string>
     <string name="share">Share</string>
 
+
+
     <string name="exit_tip">Press again to exit the WanAndroid</string>
     <string name="share_article_url">%1$sShare【%2$s】：%3$s</string>
     <string name="confirm">Confirm</string>
@@ -17,6 +19,13 @@
     <string name="no_network_tip">Please check the network and click reload</string>
     <string name="data_error">Data acquisition failed</string>
     <string name="network_unavailable_tip">Network connection is not available, please check the network settings!</string>
+
+
+    <!-- Home -->
+    <string name="collect_success">Collect Success</string>
+    <string name="cancel_collect_success">Cancel Collect Success</string>
+    <string name="new_fresh">New</string>
+    <string name="top_tip">Top</string>
 
     <!-- Nav Action -->
     <string name="nav_my_collect">Collect</string>

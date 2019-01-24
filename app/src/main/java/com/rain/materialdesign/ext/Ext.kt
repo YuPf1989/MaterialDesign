@@ -7,7 +7,7 @@ import com.franmontiel.persistentcookiejar.PersistentCookieJar
 import com.franmontiel.persistentcookiejar.cache.SetCookieCache
 import com.franmontiel.persistentcookiejar.persistence.SharedPrefsCookiePersistor
 import com.rain.materialdesign.BaseApp
-import com.rain.materialdesign.util.Constants
+import com.rain.materialdesign.util.Constant
 import com.rain.materialdesign.util.ToastUtil
 import java.text.SimpleDateFormat
 import java.util.*
@@ -33,9 +33,9 @@ fun Any.loge(content: String?) {
  * 获取cookieJar单例对象
  */
 fun getCookieJar(): PersistentCookieJar {
-    return Constants.cookiejar
+    return Constant.cookiejar
         ?: PersistentCookieJar(SetCookieCache(), SharedPrefsCookiePersistor(BaseApp.INSTANCE)).apply {
-            Constants.cookiejar = this
+            Constant.cookiejar = this
         }
 }
 
@@ -43,7 +43,7 @@ fun getCookieJar(): PersistentCookieJar {
  * 清除cookie
  */
 fun clearCookies() {
-    Constants.cookiejar?.clear()
+    Constant.cookiejar?.clear()
 }
 
 fun Fragment.showToast(content: String) {
