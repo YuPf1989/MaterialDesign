@@ -1,7 +1,7 @@
 package com.rain.materialdesign.util
 
 import android.widget.Toast
-import com.rain.materialdesign.BaseApp
+import com.rain.materialdesign.App
 
 /**
  * Author:rain
@@ -15,7 +15,7 @@ class ToastUtil {
 
         fun showToast(charSequence: CharSequence) {
             val duration = Toast.LENGTH_SHORT
-            val application = BaseApp.INSTANCE
+            val application = App.INSTANCE
             if (mToast == null) {
                 mToast = Toast.makeText(application, charSequence, duration)
             } else {

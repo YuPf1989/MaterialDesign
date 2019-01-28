@@ -7,6 +7,7 @@ import android.os.Build
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.Toolbar
+import android.view.View
 import com.afollestad.materialdialogs.color.CircleView
 import com.cxz.multiplestatusview.MultipleStatusView
 import com.rain.materialdesign.R
@@ -67,10 +68,7 @@ abstract class BaseActivity : AppCompatActivity() {
     /**
      * 设置布局id
      */
-    abstract fun getLayoutId(): Int
-
-
-
+    abstract fun attachLayoutRes(): Int
 
     /**
      * Network Change
@@ -96,11 +94,20 @@ abstract class BaseActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(getLayoutId())
+        setContentView(attachLayoutRes())
         if (useEventBus()) {
             EventBus.getDefault().register(this)
         }
         initView(savedInstanceState)
+        start()
+        initListener()
+    }
+
+    private fun initListener() {
+        mLayoutStatusView?.setOnClickListener(mRetryClickListener)
+    }
+
+    open val mRetryClickListener: View.OnClickListener = View.OnClickListener {
         start()
     }
 

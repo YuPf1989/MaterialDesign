@@ -1,7 +1,7 @@
 package com.rain.materialdesign.net
 
 import android.annotation.SuppressLint
-import com.rain.materialdesign.BaseApp
+import com.rain.materialdesign.App
 import com.rain.materialdesign.ext.getCookieJar
 import com.rain.materialdesign.net.interceptor.CacheInterceptor
 import com.rain.materialdesign.net.mygsonconvert.MyGsonConverterFactory
@@ -55,7 +55,7 @@ object RetrofitHelper {
         }
 
         // 设置请求的缓存的大小跟位置
-        val cacheFile = File(BaseApp.INSTANCE.cacheDir, "cache")
+        val cacheFile = File(App.INSTANCE.cacheDir, "cache")
         val cache = Cache(cacheFile, MAX_CACHE_SIZE)
 
         val client = OkHttpClient.Builder()

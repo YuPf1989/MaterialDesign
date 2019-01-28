@@ -9,11 +9,11 @@ import android.net.NetworkInfo
  * Date:2018/9/26 10:53
  * Description:
  */
-object NetworkUtils {
+object NetWorkUtil {
     /**
      * @return 是否有活动的网络连接
      */
-    fun hasNetWorkConnection(context: Context): Boolean {
+    fun isNetworkConnected(context: Context): Boolean {
         //获取连接活动管理器
         val connectivityManager = context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
         //获取链接网络信息

@@ -18,12 +18,27 @@
 
         <include layout="@layout/container"/>
 
+        <android.support.design.widget.BottomNavigationView
+                android:id="@+id/bottom_navigation"
+                style="@style/Widget.Design.BottomNavigationView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_gravity="bottom"
+                android:background="@color/viewBackground"
+                app:elevation="@dimen/dp_16"
+                app:itemIconTint="@drawable/nav_item_color_state"
+                app:itemTextColor="@drawable/nav_item_color_state"
+                app:layout_behavior="com.rain.materialdesign.widget.behavior.BottomNavigationBehavior"
+                app:menu="@menu/bottom_navigation_main" />
+
         <android.support.design.widget.FloatingActionButton
                 android:id="@+id/fab"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="bottom|end"
                 android:layout_margin="@dimen/fab_margin"
+                android:layout_marginBottom="@dimen/dp_60"
                 app:srcCompat="@android:drawable/ic_dialog_email"
                 app:layout_behavior="com.rain.materialdesign.widget.behavior.ScaleDownShowBehavior"
                 />

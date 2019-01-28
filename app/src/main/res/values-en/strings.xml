@@ -2,6 +2,13 @@
     <string name="app_name">MaterialDesign</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="home">Home</string>
+    <string name="knowledge_system">Knowledge</string>
+    <string name="navigation">Navigation</string>
+    <string name="project">Project</string>
+    <string name="wechat">WeChat</string>
+
+
     <string name="nav_header_title">Android Studio</string>
     <string name="nav_header_subtitle">android.studio@android.com</string>
     <string name="nav_header_desc">Navigation header</string>

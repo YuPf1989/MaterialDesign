@@ -23,4 +23,6 @@ object Constant {
     const val BASE_URL = "http://www.wanandroid.com/"
 
     const val HAS_NETWORK_KEY = "has_network"
+
+    const val LOGIN_KEY = "login"
 }

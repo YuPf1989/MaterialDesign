@@ -6,7 +6,7 @@ import android.util.Log
 import com.franmontiel.persistentcookiejar.PersistentCookieJar
 import com.franmontiel.persistentcookiejar.cache.SetCookieCache
 import com.franmontiel.persistentcookiejar.persistence.SharedPrefsCookiePersistor
-import com.rain.materialdesign.BaseApp
+import com.rain.materialdesign.App
 import com.rain.materialdesign.util.Constant
 import com.rain.materialdesign.util.ToastUtil
 import java.text.SimpleDateFormat
@@ -34,7 +34,7 @@ fun Any.loge(content: String?) {
  */
 fun getCookieJar(): PersistentCookieJar {
     return Constant.cookiejar
-        ?: PersistentCookieJar(SetCookieCache(), SharedPrefsCookiePersistor(BaseApp.INSTANCE)).apply {
+        ?: PersistentCookieJar(SetCookieCache(), SharedPrefsCookiePersistor(App.INSTANCE)).apply {
             Constant.cookiejar = this
         }
 }

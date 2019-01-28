@@ -10,7 +10,7 @@ import java.util.*
  * Date:2019/1/18 16:12
  * Description:
  */
-class BaseApp : Application() {
+class App : Application() {
     override fun onCreate() {
         super.onCreate()
         init()
@@ -22,7 +22,7 @@ class BaseApp : Application() {
     }
 
     companion object {
-        lateinit var INSTANCE: BaseApp
+        lateinit var INSTANCE: App
             private set
     }
 

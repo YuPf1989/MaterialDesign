@@ -3,7 +3,7 @@ package com.rain.materialdesign.util
 import android.annotation.SuppressLint
 import android.content.Context
 import android.content.SharedPreferences
-import com.rain.materialdesign.BaseApp
+import com.rain.materialdesign.App
 import java.io.*
 import kotlin.reflect.KProperty
 
@@ -17,7 +17,7 @@ class Preference<T>(val name: String, private val default: T) {
         private val file_name = "wan_android_file"
 
         private val prefs: SharedPreferences by lazy {
-            BaseApp.INSTANCE.getSharedPreferences(file_name, Context.MODE_PRIVATE)
+            App.INSTANCE.getSharedPreferences(file_name, Context.MODE_PRIVATE)
         }
 
         /**

@@ -19,6 +19,8 @@ import org.greenrobot.eventbus.EventBus
  * Description:
  */
 class SettingsActivity:BaseActivity(),ColorChooserDialog.ColorCallback {
+
+
     private val EXTRA_SHOW_FRAGMENT = "show_fragment"
     private val EXTRA_SHOW_FRAGMENT_ARGUMENTS = "show_fragment_args"
     private val EXTRA_SHOW_FRAGMENT_TITLE = "show_fragment_title"
@@ -38,7 +40,7 @@ class SettingsActivity:BaseActivity(),ColorChooserDialog.ColorCallback {
         initToolbar(toolbar,initTitle,true)
     }
 
-    override fun getLayoutId(): Int {
+    override fun attachLayoutRes(): Int {
         return R.layout.activity_settings
     }
 
@@ -74,7 +76,7 @@ class SettingsActivity:BaseActivity(),ColorChooserDialog.ColorCallback {
             SettingUtil.setColor(selectedColor)
         }
         initThemeColor()
-//        EventBus.getDefault().post(ColorEvent(true))
+        EventBus.getDefault().post(ColorEvent(true))
     }
 
     override fun onColorChooserDismissed(dialog: ColorChooserDialog) {

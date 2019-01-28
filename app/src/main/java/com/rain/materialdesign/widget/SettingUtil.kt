@@ -2,14 +2,14 @@ package com.rain.materialdesign.widget
 
 import android.graphics.Color
 import android.preference.PreferenceManager
-import com.rain.materialdesign.BaseApp
+import com.rain.materialdesign.App
 import com.rain.materialdesign.R
 
 /**
  * Created by chenxz on 2018/6/18.
  */
 object SettingUtil {
-    private val setting = PreferenceManager.getDefaultSharedPreferences(BaseApp.INSTANCE)
+    private val setting = PreferenceManager.getDefaultSharedPreferences(App.INSTANCE)
 
     /**
      * 获取是否开启无图模式
@@ -29,7 +29,7 @@ object SettingUtil {
      * 获取主题颜色
      */
     fun getColor(): Int {
-        val defaultColor = BaseApp.INSTANCE.resources.getColor(R.color.colorPrimary)
+        val defaultColor = App.INSTANCE.resources.getColor(R.color.colorPrimary)
         val color = setting.getInt("color", defaultColor)
         return if (color != 0 && Color.alpha(color) != 255) {
             defaultColor

@@ -5,7 +5,7 @@ import android.content.Context
 import android.content.Intent
 import com.rain.materialdesign.event.NetworkChangeEvent
 import com.rain.materialdesign.util.Constant
-import com.rain.materialdesign.util.NetworkUtils
+import com.rain.materialdesign.util.NetWorkUtil
 import com.rain.materialdesign.util.Preference
 import org.greenrobot.eventbus.EventBus
 
@@ -21,7 +21,7 @@ class NetworkChangeReceiver : BroadcastReceiver() {
     private var hasNetwork: Boolean by Preference(Constant.HAS_NETWORK_KEY, true)
 
     override fun onReceive(context: Context, intent: Intent) {
-        val isConnected = NetworkUtils.hasNetWorkConnection(context)
+        val isConnected = NetWorkUtil.isNetworkConnected(context)
         if (isConnected) {
             if (isConnected != hasNetwork) {
                 EventBus.getDefault().post(NetworkChangeEvent(isConnected))
