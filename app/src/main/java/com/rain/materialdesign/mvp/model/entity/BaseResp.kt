@@ -1,13 +1,19 @@
 package com.rain.materialdesign.mvp.model.entity
 
+import com.rain.materialdesign.util.Constant
+
 /**
  * Author:rain
  * Date:2018/11/15 17:31
  * Description:
  * 基本响应数据类
+ * 对于restFul Api的处理有两种方式：
+ * 1. 在Gson转换器中直接剥离内层数据，好处是api接口中不用加太多泛型，只关心最内层的数据
+ * 2. 直接对整个数据进行处理，每个javabean都必须是完整的数据模型
+ * 这里采用的是第二种方式
  */
-data class BaseResp<T>(val data: T, val errorCode: Int, val errorMsg: String) {
-    fun isOK() = errorCode == 0
+data class BaseResp<T>(val data: T) : BaseBean() {
+     fun isOK() = errorCode == 0
 }
 
 // 文章

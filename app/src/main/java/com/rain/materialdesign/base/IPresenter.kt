@@ -3,7 +3,7 @@ package com.rain.materialdesign.base
 /**
  * Created by chenxz on 2018/4/21.
  */
-interface IPresenter<in V : IView> {
+interface IPresenter< V : IView> {
 
     /**
      * 绑定 View

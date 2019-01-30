@@ -26,7 +26,7 @@ object NetWorkUtil {
     /**
      * @return 返回boolean ,是否为wifi网络
      */
-    fun hasWifiConnection(context: Context): Boolean {
+    fun isWifi(context: Context): Boolean {
         val connectivityManager = context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
         val networkInfo = connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_WIFI)
         //是否有网络并且已经连接
@@ -37,7 +37,7 @@ object NetWorkUtil {
      * @return 返回boolean, 判断网络是否可用, 是否为移动网络
      */
 
-    fun hasGPRSConnection(context: Context): Boolean {
+    fun isGPRS(context: Context): Boolean {
         //获取活动连接管理器
         val connectivityManager = context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
         val networkInfo = connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_MOBILE)

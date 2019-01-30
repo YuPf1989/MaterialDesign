@@ -11,6 +11,7 @@ import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
+import retrofit2.converter.gson.GsonConverterFactory
 import java.io.File
 import java.security.SecureRandom
 import java.security.cert.X509Certificate
@@ -76,7 +77,8 @@ object RetrofitHelper {
         retrofit = Retrofit.Builder()
             .baseUrl(Constant.BASE_URL)
             .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
-            .addConverterFactory(MyGsonConverterFactory.create())
+//            .addConverterFactory(MyGsonConverterFactory.create()) // 剥离出data中的数据
+            .addConverterFactory(GsonConverterFactory.create())
             .client(client)
             .build()
     }

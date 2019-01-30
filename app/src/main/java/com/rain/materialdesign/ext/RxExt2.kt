@@ -16,12 +16,9 @@ import io.reactivex.Observer
 import io.reactivex.disposables.Disposable
 
 /**
- * @author chenxz
- * @date 2018/11/22
- * @desc
+ * 针对直接处理内层数据的情况
  */
-
-fun <T:BaseBean> Observable<T>.ss(
+fun <T> Observable<T>.ss2(
     presenter: BasePresenter<IView>?,
     view: IView?,
     isShowLoading: Boolean = true,
@@ -46,13 +43,7 @@ fun <T:BaseBean> Observable<T>.ss(
                 }
 
                 override fun onNext(t: T) {
-                    when {
-                        t.errorCode == ErrorStatus.SUCCESS -> onSuccess.invoke(t)
-                        t.errorCode == ErrorStatus.TOKEN_INVAILD -> {
-                            // Token 过期，重新登录
-                        }
-                        else -> view?.showDefaultMsg(t.errorMsg)
-                    }
+                    onSuccess.invoke(t)
                 }
 
                 override fun onError(t: Throwable) {
@@ -62,7 +53,7 @@ fun <T:BaseBean> Observable<T>.ss(
             })
 }
 
-fun <T : BaseBean> Observable<T>.sss(
+fun <T > Observable<T>.sss2(
         view: IView?,
         isShowLoading: Boolean = true,
         onSuccess: (T) -> Unit
@@ -73,13 +64,7 @@ fun <T : BaseBean> Observable<T>.sss(
     return this.compose(SchedulerUtils.ioToMain())
             .retryWhen(RetryWithDelay())
             .subscribe({
-                when {
-                    it.errorCode == ErrorStatus.SUCCESS -> onSuccess.invoke(it)
-                    it.errorCode == ErrorStatus.TOKEN_INVAILD -> {
-                        // Token 过期，重新登录
-                    }
-                    else -> view?.showDefaultMsg(it.errorMsg)
-                }
+                onSuccess.invoke(it)
                 view?.hideLoading()
             }, {
                 view?.hideLoading()

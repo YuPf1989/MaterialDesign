@@ -9,7 +9,7 @@ import com.rain.materialdesign.ext.showToast
  * @desc BaseMvpActivity
  */
 @Suppress("UNCHECKED_CAST")
-abstract class BaseMvpActivity<in V : IView, P : IPresenter<V>> : BaseActivity(), IView {
+abstract class BaseMvpActivity< V : IView, P : IPresenter<V>> : BaseActivity(), IView {
 
     /**
      * Presenter

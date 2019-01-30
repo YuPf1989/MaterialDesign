@@ -9,7 +9,7 @@ import com.rain.materialdesign.ext.showToast
  * @desc BaseMvpFragment
  */
 @Suppress("UNCHECKED_CAST")
-abstract class BaseMvpFragment<in V : IView, P : IPresenter<V>> : BaseFragment(), IView {
+abstract class BaseMvpFragment< V : IView, P : IPresenter<V>> : BaseFragment(), IView {
 
     /**
      * Presenter
@@ -27,12 +27,6 @@ abstract class BaseMvpFragment<in V : IView, P : IPresenter<V>> : BaseFragment()
         super.onDestroyView()
         mPresenter?.detachView()
         this.mPresenter = null
-    }
-
-    override fun showLoading() {
-    }
-
-    override fun hideLoading() {
     }
 
     override fun showError(errorMsg: String) {

@@ -31,6 +31,11 @@ abstract class BaseActivity : AppCompatActivity() {
     protected val TAG = this.javaClass.simpleName
 
     /**
+     * check login
+     */
+    protected var isLogin: Boolean by Preference(Constant.LOGIN_KEY, false)
+
+    /**
      * theme color
      */
     protected var mThemeColor: Int = SettingUtil.getColor()
@@ -126,13 +131,13 @@ abstract class BaseActivity : AppCompatActivity() {
         mNetworkChangeReceiver = NetworkChangeReceiver()
         registerReceiver(mNetworkChangeReceiver, filter)
         super.onResume()
-        initThemeColor()
+        initColor()
     }
 
     /**
      * 初始化主题颜色
      */
-    open fun initThemeColor() {
+    open fun initColor() {
         mThemeColor = if (!SettingUtil.getIsNightMode()) {
             SettingUtil.getColor()
         } else {

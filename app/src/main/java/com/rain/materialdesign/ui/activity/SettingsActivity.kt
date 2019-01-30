@@ -75,7 +75,7 @@ class SettingsActivity:BaseActivity(),ColorChooserDialog.ColorCallback {
         if (!dialog.isAccentMode) {
             SettingUtil.setColor(selectedColor)
         }
-        initThemeColor()
+        initColor()
         EventBus.getDefault().post(ColorEvent(true))
     }
 

@@ -49,14 +49,6 @@ abstract class BasePresenter< V : IView> : IPresenter<V>, LifecycleObserver {
         if (!isViewAttached) throw MvpViewNotAttachedException()
     }
 
-    @Deprecated("")
-    open fun addSubscription(disposable: Disposable?) {
-        if (mCompositeDisposable == null) {
-            mCompositeDisposable = CompositeDisposable()
-        }
-        disposable?.let { mCompositeDisposable?.add(it) }
-    }
-
     open fun addDisposable(disposable: Disposable?) {
         if (mCompositeDisposable == null) {
             mCompositeDisposable = CompositeDisposable()
