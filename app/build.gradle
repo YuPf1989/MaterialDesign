@@ -63,4 +63,5 @@ dependencies {
     implementation "com.github.bumptech.glide:glide:$glide_version"
     annotationProcessor "com.github.bumptech.glide:compiler:$glide_version"
     implementation 'cn.bingoogolapple:bga-banner:2.2.4@aar'
+    implementation 'com.just.agentweb:agentweb:4.0.2'
 }

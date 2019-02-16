@@ -19,13 +19,16 @@ import com.rain.materialdesign.mvp.model.entity.ArticleBean
 import com.rain.materialdesign.mvp.model.entity.Banner
 import com.rain.materialdesign.mvp.model.entity.HomePageArticleBean
 import com.rain.materialdesign.mvp.presenter.HomePresenter
+import com.rain.materialdesign.ui.activity.ContentActivity
 import com.rain.materialdesign.ui.activity.LoginActivity
 import com.rain.materialdesign.ui.adapter.HomeAdapter
+import com.rain.materialdesign.util.Constant
 import com.rain.materialdesign.util.ImageLoader
 import com.rain.materialdesign.util.NetWorkUtil
 import com.rain.materialdesign.widget.SpaceItemDecoration
 import io.reactivex.Observable
 import kotlinx.android.synthetic.main.fragment_refresh_layout.*
+import org.greenrobot.eventbus.Subscribe
 
 /**
  * Author:rain
@@ -235,12 +238,12 @@ class HomeFragment : BaseMvpFragment<HomeContract.View, HomeContract.Presenter>(
     private val onItemClickListener = BaseQuickAdapter.OnItemClickListener { _, _, position ->
         if (datas.size != 0) {
             val data = datas[position]
-//            Intent(activity, ContentActivity::class.java).run {
-//                putExtra(Constant.CONTENT_URL_KEY, data.link)
-//                putExtra(Constant.CONTENT_TITLE_KEY, data.title)
-//                putExtra(Constant.CONTENT_ID_KEY, data.id)
-//                startActivity(this)
-//            }
+            Intent(activity, ContentActivity::class.java).run {
+                putExtra(Constant.CONTENT_URL_KEY, data.link)
+                putExtra(Constant.CONTENT_TITLE_KEY, data.title)
+                putExtra(Constant.CONTENT_ID_KEY, data.id)
+                startActivity(this)
+            }
         }
     }
 
@@ -250,12 +253,12 @@ class HomeFragment : BaseMvpFragment<HomeContract.View, HomeContract.Presenter>(
     private val bannerDelegate = BGABanner.Delegate<ImageView, String> { banner, imageView, model, position ->
         if (bannerDatas.size > 0) {
             val data = bannerDatas[position]
-//            Intent(activity, ContentActivity::class.java).run {
-//                putExtra(Constant.CONTENT_URL_KEY, data.url)
-//                putExtra(Constant.CONTENT_TITLE_KEY, data.title)
-//                putExtra(Constant.CONTENT_ID_KEY, data.id)
-//                startActivity(this)
-//            }
+            Intent(activity, ContentActivity::class.java).run {
+                putExtra(Constant.CONTENT_URL_KEY, data.url)
+                putExtra(Constant.CONTENT_TITLE_KEY, data.title)
+                putExtra(Constant.CONTENT_ID_KEY, data.id)
+                startActivity(this)
+            }
         }
     }
 

@@ -11,13 +11,16 @@ import com.chad.library.adapter.base.BaseQuickAdapter
 import com.rain.materialdesign.R
 import com.rain.materialdesign.base.BaseMvpFragment
 import com.rain.materialdesign.event.ColorEvent
+import com.rain.materialdesign.event.RefreshHomeEvent
 import com.rain.materialdesign.ext.loge
 import com.rain.materialdesign.ext.showToast
 import com.rain.materialdesign.mvp.contract.CollectContract
 import com.rain.materialdesign.mvp.contract.CollectPresenter
 import com.rain.materialdesign.mvp.model.entity.CollectionArticle
 import com.rain.materialdesign.mvp.model.entity.CollectionResponseBody
+import com.rain.materialdesign.ui.activity.ContentActivity
 import com.rain.materialdesign.ui.adapter.CollectAdapter
+import com.rain.materialdesign.util.Constant
 import com.rain.materialdesign.widget.SpaceItemDecoration
 import kotlinx.android.synthetic.main.fragment_collect.*
 import kotlinx.android.synthetic.main.fragment_refresh_layout.*
@@ -30,11 +33,11 @@ import org.greenrobot.eventbus.ThreadMode
  * Date:2019/1/30 10:51
  * Description:
  */
-class CollectFragment:BaseMvpFragment<CollectContract.View,CollectContract.Presenter>(),CollectContract.View {
+class CollectFragment : BaseMvpFragment<CollectContract.View, CollectContract.Presenter>(), CollectContract.View {
 
     override fun createPresenter(): CollectContract.Presenter = CollectPresenter()
 
-    override fun attachLayoutRes(): Int  = R.layout.fragment_collect
+    override fun attachLayoutRes(): Int = R.layout.fragment_collect
 
     override fun useEventBus(): Boolean = true
 
@@ -109,7 +112,6 @@ class CollectFragment:BaseMvpFragment<CollectContract.View,CollectContract.Prese
         super.showError(errorMsg)
         mLayoutStatusView?.showError()
         collectAdapter.run {
-            // todo 不太理解这个代码
             if (isRefresh)
                 setEnableLoadMore(true)
             else
@@ -162,7 +164,7 @@ class CollectFragment:BaseMvpFragment<CollectContract.View,CollectContract.Prese
     override fun showRemoveCollectSuccess(success: Boolean) {
         if (success) {
             showToast(getString(R.string.cancel_collect_success))
-//            EventBus.getDefault().post(RefreshHomeEvent(true))
+            EventBus.getDefault().post(RefreshHomeEvent(true))
         }
     }
 
@@ -208,12 +210,12 @@ class CollectFragment:BaseMvpFragment<CollectContract.View,CollectContract.Prese
     private val onItemClickListener = BaseQuickAdapter.OnItemClickListener { _, _, position ->
         if (datas.size != 0) {
             val data = datas[position]
-//            Intent(activity, ContentActivity::class.java).run {
-//                putExtra(Constant.CONTENT_URL_KEY, data.link)
-//                putExtra(Constant.CONTENT_TITLE_KEY, data.title)
-//                putExtra(Constant.CONTENT_ID_KEY, data.id)
-//                startActivity(this)
-//            }
+            Intent(activity, ContentActivity::class.java).run {
+                putExtra(Constant.CONTENT_URL_KEY, data.link)
+                putExtra(Constant.CONTENT_TITLE_KEY, data.title)
+                putExtra(Constant.CONTENT_ID_KEY, data.id)
+                startActivity(this)
+            }
         }
     }
 

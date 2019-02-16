@@ -9,7 +9,7 @@ import io.reactivex.disposables.Disposable
 import org.greenrobot.eventbus.EventBus
 
 /**
- * Created by chenxz on 2018/4/21.
+ * IPresenter基本实现类
  */
 abstract class BasePresenter< V : IView> : IPresenter<V>, LifecycleObserver {
 

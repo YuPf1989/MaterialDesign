@@ -1,4 +1,4 @@
-<resources>
+<resources >
     <string name="app_name">玩Android</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
@@ -7,6 +7,8 @@
     <string name="navigation">导航</string>
     <string name="project">项目</string>
     <string name="wechat">公众号</string>
+
+    <string name="loading">正在加载中...</string>
 
     <string name="exit_tip">再按一次退出程序</string>
     <string name="share_article_url">%1$s分享【%2$s】：%3$s</string>
@@ -74,11 +76,11 @@
     <!-- AboutUs -->
     <string name="about_us">关于我们</string>
     <string name="changelog">更新日志</string>
-    <string name="changelog_url">https://github.com/iceCola7/WanAndroid/releases</string>
+    <string name="changelog_url">https://github.com/YuPf1989/MaterialDesign</string>
     <string name="about_developers_label">主要开发者</string>
     <string name="about_developers">https://github.com/iceCola7</string>
     <string name="source_code">源代码</string>
-    <string name="source_code_url">https://github.com/iceCola7/WanAndroid</string>
+    <string name="source_code_url">https://github.com/YuPf1989/MaterialDesign</string>
     <string name="about_libraries_label">开源许可</string>
     <string name="about_libraries_summary">查看开源许可信息</string>
     <string name="copyright">版权声明</string>

@@ -6,10 +6,16 @@ import android.support.design.widget.Snackbar
 import android.support.v4.app.Fragment
 import android.support.v4.content.ContextCompat
 import android.util.Log
+import android.view.ViewGroup
+import android.webkit.WebChromeClient
+import android.webkit.WebView
+import android.webkit.WebViewClient
 import android.widget.TextView
 import com.franmontiel.persistentcookiejar.PersistentCookieJar
 import com.franmontiel.persistentcookiejar.cache.SetCookieCache
 import com.franmontiel.persistentcookiejar.persistence.SharedPrefsCookiePersistor
+import com.just.agentweb.AgentWeb
+import com.just.agentweb.DefaultWebClient
 import com.rain.materialdesign.App
 import com.rain.materialdesign.R
 import com.rain.materialdesign.util.Constant
@@ -74,6 +80,29 @@ fun Fragment.showSnackMsg(msg: String) {
     snackbar.show()
 }
 
+
+/**
+ * getAgentWeb
+ */
+fun String.getAgentWeb(
+    activity: Activity,
+    webContent: ViewGroup,
+    layoutParams: ViewGroup.LayoutParams,
+    webView: WebView,
+    webChromeClient: WebChromeClient?,
+    webViewClient: WebViewClient
+) = AgentWeb.with(activity)//传入Activity or Fragment
+    .setAgentWebParent(webContent, 1, layoutParams)//传入AgentWeb 的父控件
+    .useDefaultIndicator()// 使用默认进度条
+    .setWebView(webView)
+    .setWebChromeClient(webChromeClient)
+    .setWebViewClient(webViewClient)
+    .setMainFrameErrorView(R.layout.agentweb_error_page, -1)
+    .setOpenOtherPageWays(DefaultWebClient.OpenOtherPageWays.ASK)//打开其他应用时，弹窗咨询用户是否前往其他应用
+    .createAgentWeb()//
+    .ready()
+    .go(this)
+
 /**
  * 格式化当前日期
  */
@@ -81,6 +110,8 @@ fun formatCurrentDate(): String {
     val sdf = SimpleDateFormat("yyyy-MM-dd")
     return sdf.format(Date())
 }
+
+
 
 
 

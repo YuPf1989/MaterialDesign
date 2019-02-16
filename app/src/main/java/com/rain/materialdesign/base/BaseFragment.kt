@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import com.cxz.multiplestatusview.MultipleStatusView
 import com.rain.materialdesign.event.NetworkChangeEvent
+import com.rain.materialdesign.ext.loge
 import com.rain.materialdesign.util.Constant
 import com.rain.materialdesign.util.Preference
 import org.greenrobot.eventbus.EventBus
@@ -76,6 +77,7 @@ abstract class BaseFragment : Fragment() {
 
     override fun setUserVisibleHint(isVisibleToUser: Boolean) {
         super.setUserVisibleHint(isVisibleToUser)
+        loge("isVisibleToUser:$isVisibleToUser")
         if (isVisibleToUser) {
             lazyLoadDataIfPrepared()
         }

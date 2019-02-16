@@ -14,6 +14,23 @@ object Constant {
 
     const val LANGUAGE_TYPE_CHINESE = 2
 
+    /**
+     * url key
+     */
+    const val CONTENT_URL_KEY = "url"
+    /**
+     * title key
+     */
+    const val CONTENT_TITLE_KEY = "title"
+    /**
+     * id key
+     */
+    const val CONTENT_ID_KEY = "id"
+
+    /**
+     * share key
+     */
+    const val CONTENT_SHARE_TYPE = "text/plain"
 
     /**
      * cookie持久化

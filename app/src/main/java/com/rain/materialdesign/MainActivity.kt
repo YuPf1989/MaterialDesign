@@ -18,6 +18,7 @@ import android.widget.TextView
 import com.rain.materialdesign.base.BaseActivity
 import com.rain.materialdesign.event.ColorEvent
 import com.rain.materialdesign.event.LoginEvent
+import com.rain.materialdesign.event.RefreshHomeEvent
 import com.rain.materialdesign.ext.showToast
 import com.rain.materialdesign.ui.activity.CommonActivity
 import com.rain.materialdesign.ui.activity.LoginActivity
@@ -38,7 +39,7 @@ import org.greenrobot.eventbus.ThreadMode
  * 打造成一个具有material design风格的MVP框架
  * 请参考https://github.com/iceCola7/KotlinMVPSamples
  */
-class MainActivity : BaseActivity(){
+class MainActivity : BaseActivity() {
 
     private val FRAGMENT_HOME = 0x01
     private val FRAGMENT_KNOWLEDGE = 0x02
@@ -102,10 +103,12 @@ class MainActivity : BaseActivity(){
             text = if (isLogin) username else getString(R.string.login)
             setOnClickListener {
                 if (!isLogin) {
-                    JumpUtil.overlay(this@MainActivity,LoginActivity::class.java)
+                    JumpUtil.overlay(this@MainActivity, LoginActivity::class.java)
                 }
             }
         }
+
+        showFragment(FRAGMENT_HOME)
 
     }
 
@@ -128,22 +131,18 @@ class MainActivity : BaseActivity(){
                             startActivity(this)
                         }
                     }
-                    // drawer_layout.closeDrawer(GravityCompat.START)
                 }
                 R.id.nav_setting -> {
                     JumpUtil.overlay(this, SettingsActivity::class.java)
-                    // drawer_layout.closeDrawer(GravityCompat.START)
                 }
                 R.id.nav_about_us -> {
 //                    Intent(this@MainActivity, CommonActivity::class.java).run {
 //                        putExtra(Constant.TYPE_KEY, Constant.Type.ABOUT_US_TYPE_KEY)
 //                        startActivity(this)
 //                    }
-                    // drawer_layout.closeDrawer(GravityCompat.START)
                 }
                 R.id.nav_logout -> {
                     logout()
-                    // drawer_layout.closeDrawer(GravityCompat.START)
                 }
                 R.id.nav_night_mode -> {
                     if (SettingUtil.getIsNightMode()) {
@@ -157,6 +156,8 @@ class MainActivity : BaseActivity(){
                     recreate()
                 }
             }
+            drawer_layout.closeDrawer(GravityCompat.START)
+
             true
         }
 
@@ -306,6 +307,13 @@ class MainActivity : BaseActivity(){
         when (item.itemId) {
             R.id.action_settings -> return true
             else -> return super.onOptionsItemSelected(item)
+        }
+    }
+
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    fun refreshHomeEvent(event: RefreshHomeEvent) {
+        if (event.isRefresh) {
+            mHomeFragment?.lazyLoad()
         }
     }
 

@@ -1,4 +1,4 @@
-<resources>
+<resources >
     <string name="app_name">WanAndroid</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
@@ -7,6 +7,8 @@
     <string name="navigation">Navigation</string>
     <string name="project">Project</string>
     <string name="wechat">WeChat</string>
+
+    <string name="loading">Loading...</string>
 
     <string name="exit_tip">Press again to exit the WanAndroid</string>
     <string name="share_article_url">%1$sShare【%2$s】：%3$s</string>
@@ -74,11 +76,11 @@
     <!-- AboutUs -->
     <string name="about_us">About US</string>
     <string name="changelog">Update Log</string>
-    <string name="changelog_url">https://github.com/iceCola7/WanAndroid/releases</string>
+    <string name="changelog_url">https://github.com/YuPf1989/MaterialDesign</string>
     <string name="about_developers_label">Main Developer</string>
     <string name="about_developers">https://github.com/bjchexz</string>
     <string name="source_code">Source Code</string>
-    <string name="source_code_url">https://github.com/iceCola7/WanAndroid</string>
+    <string name="source_code_url">https://github.com/YuPf1989/MaterialDesign</string>
     <string name="about_libraries_label">Open Source License</string>
     <string name="about_libraries_summary">View open source license information</string>
     <string name="copyright">Copyright declaration</string>
