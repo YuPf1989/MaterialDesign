@@ -29,7 +29,7 @@ class SettingFragment : PreferenceFragment(), SharedPreferences.OnSharedPreferen
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        addPreferencesFromResource(R.xml.pref_setting2)
+        addPreferencesFromResource(R.xml.pref_setting)
         setHasOptionsMenu(true)
         context = activity as SettingsActivity
         colorPreview = findPreference("color") as IconPreference

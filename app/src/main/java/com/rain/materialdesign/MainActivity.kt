@@ -40,6 +40,7 @@ import org.greenrobot.eventbus.ThreadMode
  * 请参考https://github.com/iceCola7/KotlinMVPSamples
  */
 class MainActivity : BaseActivity() {
+    private val BOTTOM_INDEX: String = "bottom_index"
 
     private val FRAGMENT_HOME = 0x01
     private val FRAGMENT_KNOWLEDGE = 0x02
@@ -69,6 +70,13 @@ class MainActivity : BaseActivity() {
         return R.layout.activity_main
     }
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        if (savedInstanceState != null) {
+            mIndex = savedInstanceState.getInt(BOTTOM_INDEX)
+        }
+        super.onCreate(savedInstanceState)
+    }
+
     override fun start() {
     }
 
@@ -87,9 +95,6 @@ class MainActivity : BaseActivity() {
         toggle.syncState()
 
         bottom_navigation.run {
-            // 以前使用 BottomNavigationViewHelper.disableShiftMode(this) 方法来设置底部图标和字体都显示并去掉点击动画
-            // 升级到 28.0.0 之后，官方重构了 BottomNavigationView ，目前可以使用 labelVisibilityMode = 1 来替代
-            // BottomNavigationViewHelper.disableShiftMode(this)
             labelVisibilityMode = 1
             setOnNavigationItemSelectedListener(onNavigationItemSelectedListener)
         }
@@ -108,7 +113,7 @@ class MainActivity : BaseActivity() {
             }
         }
 
-        showFragment(FRAGMENT_HOME)
+        showFragment(mIndex)
 
     }
 
@@ -208,6 +213,11 @@ class MainActivity : BaseActivity() {
 
             }
         }
+
+    override fun onSaveInstanceState(outState: Bundle?) {
+        super.onSaveInstanceState(outState)
+        outState?.putInt(BOTTOM_INDEX, mIndex)
+    }
 
 
     /**

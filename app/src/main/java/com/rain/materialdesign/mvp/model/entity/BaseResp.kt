@@ -1,7 +1,5 @@
 package com.rain.materialdesign.mvp.model.entity
 
-import com.rain.materialdesign.util.Constant
-
 /**
  * Author:rain
  * Date:2018/11/15 17:31
@@ -60,7 +58,7 @@ data class Tag(
     val url: String
 )
 
-//轮播图
+// 轮播图
 data class Banner(
     val desc: String,
     val id: Int,
